@@ -1,27 +1,36 @@
 def solution(s)
-  hash = Hash.new(0)
+  @len=s.length
+  @hash = Hash.new(0)
   s.each_char do |x|
-    hash[x]+=1
+    @hash[x]+=1
   end
-  odd = []
-  even = []
-  hash.each do |k,v|
+  @odd = []
+  @even = []
+end
+
+def oddeven
+  @hash.each do |k,v|
     if v % 2 == 0
-      even << v
+      @even << v
     else
-      odd << v
+      @odd << v
     end
   end
-  if s.length % 2 == 0 && even.empty? == false && odd.empty?
+end
+
+def assign
+  if @len % 2 == 0 && @even.empty? == false && @odd.empty?
     puts 1
-  elsif s.length % 2 != 0 && odd[0]>1
+  elsif @len % 2 != 0 && @odd[0]>1
     puts 1
   else
     puts 0
   end
 end
 
-solution('aabcba')
+solution('aabb')
+oddeven
+assign
 
 
 
